@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TallyTalk — my book</title>
+  <link rel="icon" href="logo.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="sheet">
+    <header class="app-top">
+      <a class="brand" href="/"><img src="logo.svg" alt="" />TallyTalk</a>
+      <span class="pill" data-serv-status>…</span>
+      <label class="sr-only" for="currency">Currency</label>
+      <select id="currency"><option value="NGN">Naira (NGN)</option><option value="GHS">Cedi (GHS)</option><option value="KES">Shilling (KES)</option><option value="USD">Dollar (USD)</option></select>
+      <button class="btn" id="readback" aria-pressed="true" style="min-height:48px;padding:0 14px">🔊 Read back: on</button>
+    </header>
+
+    <section class="totals" aria-label="Today" aria-live="polite">
+      <div class="tot g"><span>Sales today</span><b id="t-sales">0</b></div>
+      <div class="tot"><span>Spent today</span><b id="t-spent">0</b></div>
+      <div class="tot y"><span>Cash in today</span><b id="t-cash">0</b></div>
+      <div class="tot r"><span>People owe you</span><b id="t-owed">0</b></div>
+    </section>
+
+    <main class="app">
+      <div class="stack">
+        <section class="box" aria-labelledby="h-talk">
+          <h2 id="h-talk">Wetin happen? Tell me.</h2>
+          <button class="talk" id="talk"><span class="mic" aria-hidden="true">🎙️</span><span id="talk-label">Press and talk</span><small>e.g. "I sell 2 paint of beans 3k each"</small></button>
+          <form class="typed" id="typed">
+            <label for="said" class="sr-only">Or type it</label>
+            <input id="said" placeholder="…or type it here" autocomplete="off" />
+            <button class="btn btn-ink">Save</button>
+          </form>
+          <div class="quick" aria-label="Examples">
+            <button data-ex="I sell 3 bags rice to Mama Chidi 45k each, she pay 100k remain 35k">Rice on credit</button>
+            <button data-ex="Mama Chidi bring 20k for her balance">Debt repaid</button>
+            <button data-ex="I pay keke transport 3500 to carry goods from Mile 12">Transport</button>
+            <button data-ex="I buy 10 bags of rice from Alhaji Musa 38k each, I pay everything">Restock</button>
+          </div>
+          <div id="confirm" aria-live="polite"></div>
+        </section>
+
+        <section class="box" aria-labelledby="h-ask">
+          <h2 id="h-ask">Ask about your business</h2>
+          <form class="typed" id="ask-form" style="margin-top:0">
+            <label for="q" class="sr-only">Question</label>
+            <input id="q" placeholder="How my business dey this week?" autocomplete="off" />
+            <button type="button" class="btn" id="ask-mic" aria-label="Ask by voice">🎙️</button>
+            <button class="btn btn-yellow">Ask</button>
+          </form>
+          <div id="answer" aria-live="polite"></div>
+        </section>
+      </div>
+
+      <div class="stack">
+        <section class="box" aria-labelledby="h-debt">
+          <h2 id="h-debt">Who owe me</h2>
+          <div class="row" style="display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap">
+            <label for="lang" style="font:0.8rem var(--mono)">Reminder language</label>
+            <select id="lang"><option>Nigerian Pidgin</option><option>English</option><option>Yoruba</option><option>Igbo</option><option>Hausa</option></select>
+          </div>
+          <div class="debtors" id="debtors"></div>
+        </section>
+
+        <section class="box" aria-labelledby="h-book">
+          <h2 id="h-book">My book</h2>
+          <ul class="ledger" id="ledger"></ul>
+        </section>
+      </div>
+    </main>
+  </div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "api/*.js", "use": "@vercel/node", "config": { "maxDuration": 60 } },
+    { "src": "public/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/api/health", "dest": "/api/health.js" },
+    { "src": "/api/([a-z_]+)", "dest": "/api/agent.js?agent=$1" },
+    { "src": "/sw.js", "headers": { "Cache-Control": "no-cache" }, "dest": "/public/sw.js" },
+    { "src": "/", "dest": "/public/index.html" },
+    { "src": "/app", "dest": "/public/app.html" },
+    { "src": "/(.*)", "dest": "/public/$1" }
+  ]
+}

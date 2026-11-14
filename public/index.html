@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TallyTalk — talk your sales, we keep the book</title>
+  <meta name="description" content="Voice bookkeeping in English and Pidgin for market traders. Say what you sold, and TallyTalk keeps the ledger, tracks who owes you, and writes polite reminders. Powered by SERV Reasoning." />
+  <link rel="icon" href="logo.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="sheet">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="/"><img src="logo.svg" alt="" />TallyTalk</a>
+      <div class="nav-links"><a href="#features">Features</a><a href="#how">How it works</a><a href="#pricing">Pricing</a></div>
+      <a class="btn btn-ink" href="/app">Open my book</a>
+    </nav>
+
+    <header class="hero">
+      <div>
+        <h1>Talk your sales.<br /><span class="mark">We keep the book.</span></h1>
+        <p>For market traders who are too busy, or not comfortable enough with writing, to keep records. Just say "I sell 3 bags rice to Mama Chidi, 45k each, she pay 100k". TallyTalk writes it down, tracks who owes you, and tells you whether you're really making profit.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-yellow" href="/app">🎙️ Start talking</a>
+          <a class="btn" href="#how">See how</a>
+        </div>
+        <div class="lang" aria-label="Languages"><span>English</span><span>Pidgin</span><span>Mixed</span><span>Reminders in Yorùbá · Igbo · Hausa</span></div>
+      </div>
+      <div class="hero-card" aria-hidden="true">
+        <span class="sticker">No writing needed</span>
+        <div class="wave"><i style="height:30%"></i><i style="height:70%"></i><i style="height:100%"></i><i style="height:55%"></i><i style="height:85%"></i><i style="height:40%"></i><i style="height:95%"></i><i style="height:60%"></i><i style="height:30%"></i><i style="height:75%"></i><i style="height:50%"></i><i style="height:90%"></i></div>
+        <p class="said"><small>YOU SAID</small>"I sell 3 bags rice to Mama Chidi, 45k each, she pay 100k remain 35k"</p>
+        <div class="entry"><span class="t">Sale · Rice × 3 bags</span><b>₦135,000</b><span>Mama Chidi</span><span class="owe">owes ₦35,000</span></div>
+      </div>
+    </header>
+
+    <div class="strip">
+      <div><b>39.6M</b><span>micro, small &amp; medium businesses in Nigeria (SMEDAN/NBS)</span></div>
+      <div><b>85%</b><span>of jobs in Africa are informal (ILO)</span></div>
+      <div><b>0</b><span>forms to fill. Just talk</span></div>
+      <div><b>1 tap</b><span>to send a polite debt reminder on WhatsApp</span></div>
+    </div>
+
+    <section id="features">
+      <div class="sec-head"><h2><span class="mark">Features</span></h2><p>Built for the realities of the market: noise, credit customers, part payments, "k" for thousand, and no time to write.</p></div>
+      <div class="grid4">
+        <div class="feat"><span class="ico">🎙️</span><div><h3>Speak like you speak</h3><p>English, Pidgin or both. It understands "45k", "half bag", "she pay part" and "remain".</p></div></div>
+        <div class="feat dark"><span class="ico">📒</span><div><h3>Who owes you, always</h3><p>Every credit sale becomes a debt. Every repayment clears it. No more forgotten money.</p></div></div>
+        <div class="feat y"><span class="ico">💬</span><div><h3>Polite reminders</h3><p>A warm WhatsApp message in Pidgin, English, Yorùbá, Igbo or Hausa that keeps your customer and gets your money back.</p></div></div>
+        <div class="feat"><span class="ico">📈</span><div><h3>"How my business dey?"</h3><p>Ask out loud. Get sales, spending, profit and your best seller, spoken back to you.</p></div></div>
+      </div>
+    </section>
+
+    <section class="flow" id="how">
+      <div><span class="n">01 —</span><h3>Press &amp; talk</h3><p>One big button. Say the sale, the purchase, the transport money, or who paid you.</p></div>
+      <div><span class="n">02 —</span><h3>Hear it back</h3><p>TallyTalk reads the record back in your own style, so you can confirm it's right without reading.</p></div>
+      <div><span class="n">03 —</span><h3>Grow with records</h3><p>Your daily book becomes a history that can help you qualify for microloans.</p></div>
+    </section>
+
+    <section id="pricing">
+      <div class="sec-head"><h2><span class="mark">Pricing</span></h2><p>Cheaper than one bag of pure water a day.</p></div>
+      <div class="pricing">
+        <div class="plan"><span>Starter</span><b>Free</b><ul><li>30 voice records a month</li><li>Debt tracker</li><li>Daily totals</li></ul></div>
+        <div class="plan hot"><span>Trader</span><b>₦1,500<small style="font-size:1rem">/mo</small></b><ul><li>Unlimited records</li><li>WhatsApp reminders</li><li>Weekly spoken business report</li></ul></div>
+        <div class="plan"><span>Lenders &amp; co-ops</span><b>Partner</b><ul><li>Credit-ready transaction histories (with trader consent)</li><li>Market association dashboards</li></ul></div>
+      </div>
+    </section>
+
+    <section class="serv">
+      <div>
+        <h2>Why it needs reasoning</h2>
+        <p>"3 bags 45k each" and "3 bags for 45k" differ by ₦90,000. Market speech is full of shorthand, part payments and speech-to-text errors, and getting the book wrong costs real money. Every entry goes through SERV Reasoning, which works out unit price versus total, credit versus cash, and who the customer is before anything is saved. It reads the record back for confirmation, and asks when something is unclear.</p>
+      </div>
+<pre><code>said: "I sell 3 bags rice to mama chidi
+       45k each she pay 100k remain 35k"
+
+→ { "type": "sale", "item": "Rice",
+    "qty": 3, "unit": "bag",
+    "unit_price": 45000, "total": 135000,
+    "paid": 100000, "party": "Mama Chidi" }
+
+confirm: "Okay. You sell 3 bags of rice to
+  Mama Chidi… She pay ₦100,000,
+  remain ₦35,000."</code></pre>
+    </section>
+
+    <footer class="footer"><span>© 2026 TallyTalk · SERV Hackathon 02</span><span>Your book stays on your phone.</span></footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: tallytalk
+    runtime: node
+    plan: free
+    buildCommand: echo "no build step"
+    startCommand: node server.js
+    envVars:
+      - key: SERV_API_KEY
+        sync: false
+      - key: SERV_MODEL
+        value: gpt-5.4-mini
