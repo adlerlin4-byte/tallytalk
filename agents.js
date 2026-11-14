@@ -18,6 +18,30 @@ const TYPE = (t) => {
   if (/expense|transport|levy|cost|fee|rent/.test(s)) return "expense";
   return "sale";
 };
+// Any top-level string field that looks like a spoken read-back, whatever the model named it.
+function findSpoken(r) {
+  for (const [k, v] of Object.entries(r || {})) {
+    if (typeof v === "string" && v.trim().length > 8 && /confirm|read|back|spoken|speech|voice|say|reply|response|message|summary/i.test(k)) return v.trim();
+  }
+  return null;
+}
+// Last resort: build the read-back from the numbers themselves (Pidgin, like the users speak).
+function readBack(entries) {
+  const n = (x) => "₦" + Math.round(x).toLocaleString("en-NG");
+  const parts = entries.filter((e) => e.total > 0).map((e) => {
+    const what = [e.qty, e.unit, e.item].filter(Boolean).join(" ");
+    if (e.type === "sale") {
+      const owe = e.total - e.paid;
+      return `You sell ${what || "goods"}${e.party ? ` to ${e.party}` : ""}, total ${n(e.total)}.` + (owe > 0 ? ` ${e.party || "Customer"} pay ${n(e.paid)}, remain ${n(owe)}.` : "");
+    }
+    if (e.type === "payment_received") return `${e.party || "Customer"} don pay ${n(e.paid || e.total)}.`;
+    if (e.type === "purchase") return `You buy ${what || "stock"}${e.party ? ` from ${e.party}` : ""}, ${n(e.total)}.`;
+    if (e.type === "payment_made") return `You pay ${e.party || "supplier"} ${n(e.paid || e.total)}.`;
+    return `You spend ${n(e.paid || e.total)} on ${e.item || "expense"}.`;
+  });
+  return parts.length ? "Okay. " + parts.join(" ") : "I no fit understand am. Abeg talk am again.";
+}
+
 function normaliseEntry(e) {
   const type = TYPE(pick(e, "type", "transaction_type", "kind", "category_type"));
   const qty = num(pick(e, "qty", "quantity", "count"));
@@ -69,7 +93,7 @@ The trader said: """${i.said}"""`,
       const list = Array.isArray(r.entries) ? r.entries : Array.isArray(r.transactions) ? r.transactions : Array.isArray(r) ? r : [r.entry || r.transaction || r];
       return {
         entries: list.map(normaliseEntry).filter((e) => e.total > 0),
-        confirm: pick(r, "confirm", "confirmation", "read_back", "readback", "readBack", "message", "summary") || "Okay, I don write am.",
+        confirm: pick(r, "confirm", "confirmation", "read_back", "readback", "readBack", "message", "summary") || findSpoken(r) || readBack(list.map(normaliseEntry)),
         clarify: pick(r, "clarify", "clarification", "clarifying_question", "question"),
       };
     },

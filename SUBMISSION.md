@@ -22,8 +22,8 @@ Press one big button and talk the way you talk: "I sell 3 bags rice to Mama Chid
 
 **What was built during the hackathon:** Everything. The landing page, the app, the SERV agents and the zero-dependency server were all built for SERV Hackathon 02 (Nov 2026).
 
-**Public repo:** https://github.com/<your-username>/tallytalk
-**Live demo:** https://tallytalk.onrender.com (after deploying with render.yaml), demo route `/app?demo=1`
+**Public repo:** https://github.com/adlerlin4-byte/tallytalk
+**Live demo:** https://tally-talk-six.vercel.app/app?demo=1 (landing page: https://tally-talk-six.vercel.app)
 **Demo video:** <paste YouTube/Loom link>
 **X post:** <paste link>
 
@@ -36,7 +36,7 @@ Voice bookkeeping for market traders. Say "I sell 3 bags rice to Mama Chidi 45k 
 
 Built on @openservai SERV Reasoning #SERVHackathon
 
-[demo] [repo]
+https://tally-talk-six.vercel.app https://github.com/adlerlin4-byte/tallytalk
 ```
 
 ## 90-second demo video script
